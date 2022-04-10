@@ -79,3 +79,8 @@ h1 {
   color: black;
   border-color: #c0ded9;
 }
+.githublink {
+  margin: 0px 20px;
+  padding: 0px 0px 0px 40px;
+  font-family:"Fredoka", sans-serif;
+}
