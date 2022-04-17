@@ -86,3 +86,9 @@ h1 {
   height: 2.5rem;
   font-family:"Fredoka", sans-serif;
 }
+
+
+#weather-description::first-letter{
+  text-transform: capitalize;
+
+}
