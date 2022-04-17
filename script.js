@@ -23,23 +23,25 @@ function formatDate (timestamp){
   return `${day} ${hours}:${minutes}`
 }
 
-funciton displayTemperature(response){
- let temperatureElement = document.querySelector("#current-degrees");
- let cityElement = document.querySelector("#city");
- let descriptionElement = document.querySelector("#weather-description");
- let humidityElement = document.querySelector("#humidity-value");
- let windElement = document.querySelector("#wind-speed");
- let dateElement = document.querySelector("#current-time");
+function displayTemperature (response) {
+  let temperatureElement = document.querySelector("#current-degrees");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity-value");
+  let windElement = document.querySelector("#wind-speed");
+  let dateElement = document.querySelector("#current-time");
+  let iconElement = document.querySelector("#icon");
 
- temperatureElement.innerHTML = Math.round(response.data.main.temp);
- cityElement.innerHTML = response.data.name;
- descriptionElement.innerHTML = response.data.weather[0].description;
- humidityElement.innerHTML = response.data.main.humidity;
- windElement.innerHTML = Math.round(response.data.wind.speed);
- dateElement.innerHTML = formatDate(response.data.dt*1000);
-
-};
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt*1000);
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+}
 let apiKey = "7d88c15d68c158185437db8adc9adf90";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=NewYork&appid=${apiKey}&units=metric`;
+let city ="Paris";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
