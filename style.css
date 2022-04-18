@@ -106,3 +106,10 @@ h1 {
   font-family: "Fredoka", sans-serif;
   font-size: 50px;
 }
+#temperatures.active{
+  color: black;
+  cursor: default;
+}
+#temperatures.active::hover{
+  text-decoration: none;
+}
