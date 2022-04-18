@@ -22,7 +22,7 @@
         <div class="search-bar">
             <form id="search-form">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <input type="text" class="location-input" id="city-input" placeholder="Enter your city" />
                     </div>
                     <div class="col-3 p-0">
@@ -43,14 +43,12 @@
                     Dusseldorf <i class="fa-solid fa-location-pin"></i>
                 </h1>
             </div>
-            <div class="day" id="current-time">
-                Sunday, 13 of March, 2022
+            <div class="day">
+                Last Updated <span id="current-time"></span>
             </div>
             <div class="col">
                 <div class="row">
-                    
-                 <img src="" id="icon"
-                />
+                 <img src="" id="icon"/>
                 </div>
                 <div class="row">
                     <div class="weather" id="weather-description">
@@ -58,16 +56,12 @@
                     </div>
                 </div>
                 <div class="today-temp" id="temp-today">
-                    <div class="degrees" id="temperatures">
+                    <span class="degrees" id="temperatures">
                         14°
-                        <span class="units"> 
-                            <a href="#" id="celsius-link">°C </a>
-                            | 
-                            <a href="#" id="fahrenheit-link"> 
-                            °F
-                            </a>
-                        </span>
-                    </div>
+                    </span>
+                    <span class="units"><a href="#" id="celsius-link" class="active"><small>°C</small></a> | <a href="#" id="fahrenheit-link"
+                            class="f-link"><small>°F</small></a></span>
+                    
                     <div class="humidity">Humidity <span id="humidity-value">10</span>%</div>
                     <div class="w-100"></div>
                     <div class="wind">Wind speed <span id="wind-speed">20</span>m/s</div>

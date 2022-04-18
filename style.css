@@ -106,10 +106,16 @@ h1 {
   font-family: "Fredoka", sans-serif;
   font-size: 50px;
 }
-#temperatures.active{
-  color: black;
+
+.today-temp .active {
+  color: #606466;
   cursor: default;
-}
-#temperatures.active::hover{
   text-decoration: none;
+}
+.today-temp .f-link {
+  text-decoration: none;
+}
+.units {
+  position: relative;
+  font-size: 12px;
 }
