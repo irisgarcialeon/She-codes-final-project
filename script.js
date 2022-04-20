@@ -22,6 +22,34 @@ function formatDate (timestamp){
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`
 }
+// Forecast//
+
+function displayForecast(){
+  let forecastElement = document.querySelector("#forecast-weather");
+
+  let days = ["Wed", "Thurs", "Fri", "Sat"];
+
+  let forecastHTML = `<div class = "row">`;
+  
+  days.forEach(function(day){
+   forecastHTML =
+     forecastHTML +
+     `<div class="col mon">
+                <div class="col first-day">${day}</div>
+                <div class="weather-icon">🌧️
+                </div>
+                <div class="weather-forecast-temperature">
+                    <span class="weather-forecast-min">5°</span> 
+                    | 
+                    <span class="weather-forecast-max">17°</span>
+                </div>
+             </div>`;
+  }) 
+  forecastHTML = forecastHTML + `</div>`;
+
+
+  forecastElement.innerHTML = forecastHTML;
+}
 
 // Temperature display //
 function displayTemperature (response) {
@@ -87,3 +115,4 @@ function displayCelsiusLinkTemperature(event){
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+displayForecast();
