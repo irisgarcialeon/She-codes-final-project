@@ -22,9 +22,11 @@ function formatDate (timestamp){
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`
 }
+
 // Forecast//
 
-function displayForecast(){
+function displayForecast(response){
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
   let days = ["Wed", "Thurs", "Fri", "Sat"];
@@ -51,7 +53,15 @@ function displayForecast(){
   forecastElement.innerHTML = forecastHTML;
 }
 
-// Temperature display //
+// Temperature display and weather forecast //
+
+function getForecast(coordinates){
+  console.log(coordinates);
+  let apiKey = "7d88c15d68c158185437db8adc9adf90";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature (response) {
   let temperatureElement = document.querySelector("#temperatures");
   let cityElement = document.querySelector("#city");
@@ -70,6 +80,8 @@ function displayTemperature (response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt*1000);
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  getForecast(response.data.coord);
 }
 
 // Search Engine //
@@ -95,7 +107,7 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusLink = document.querySelector("#celsius-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 celsiusLink.addEventListener("click", displayCelsiusLinkTemperature);
-search("Berlin");
+
 
 // Unit conversion //
 
