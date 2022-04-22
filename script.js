@@ -41,17 +41,23 @@ function displayForecast(response){
     if (index < 6)
    forecastHTML =
      forecastHTML +
-            `<div class="col-2">
+     `<div class="col-2">
                 <div class="col first-day">${formatDay(forecastDay.dt)}</div>
                  <img
-                    src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                    src="http://openweathermap.org/img/wn/${
+                      forecastDay.weather[0].icon
+                    }@2x.png"
                     alt=""
                     width="42"
                   />
                 <div class="weather-forecast-temperature">
-                    <span class="weather-forecast-min">${Math.round(forecastDay.temp.min)}</span> 
+                    <span class="weather-forecast-min">${Math.round(
+                      forecastDay.temp.min
+                    )}°</span> 
                     | 
-                    <span class="weather-forecast-max">${Math.round(forecastDay.temp.max)}</span>
+                    <span class="weather-forecast-max">${Math.round(
+                      forecastDay.temp.max
+                    )}°</span>
                 </div>
              </div>`;
   }) 
@@ -107,29 +113,4 @@ function handleSubmit(event){
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let celsiusTemperature = null;
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-let celsiusLink = document.querySelector("#celsius-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-celsiusLink.addEventListener("click", displayCelsiusLinkTemperature);
-
-
-// Unit conversion //
-
-function displayFahrenheitTemperature(event){
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperatures");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-function displayCelsiusLinkTemperature(event){
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperatures");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
 
