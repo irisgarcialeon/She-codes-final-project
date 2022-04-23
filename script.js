@@ -101,8 +101,6 @@ function search(city){
 let apiKey = "7d88c15d68c158185437db8adc9adf90";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
-celsiusLink.classList.add("active");
-fahrenheitLink.classList.remove("active");
 }
 
 function handleSubmit(event){
@@ -114,3 +112,21 @@ function handleSubmit(event){
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
+
+// Geolocation button// 
+
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=7d88c15d68c158185437db8adc9adf90&units=${units}`;
+
+  axios.get(apiUrl).then(showWeather);
+}
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+let geoButton = document.querySelector("#geolocation");
+geoButton.addEventListener("click", getCurrentPosition);
+
+search (Dusseldorf);
