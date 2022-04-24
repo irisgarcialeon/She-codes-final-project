@@ -121,7 +121,7 @@ function showPosition(position) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=7d88c15d68c158185437db8adc9adf90&units=${units}`;
 
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(displayTemperature);
 }
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
