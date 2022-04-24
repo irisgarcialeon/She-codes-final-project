@@ -129,4 +129,4 @@ function getCurrentPosition() {
 let geoButton = document.querySelector("#geolocation");
 geoButton.addEventListener("click", getCurrentPosition);
 
-search (Dusseldorf);
+search ("Dusseldorf");
